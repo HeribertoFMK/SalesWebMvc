@@ -5,12 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SalesWebMvc.Data;
+using SalesWebMvc.Model;
 
 namespace SalesWebMvc.Migrations
 {
     [DbContext(typeof(SalesWebMvcContext))]
-    [Migration("20211028155034_version1")]
-    partial class version1
+    [Migration("20211028164907_version01")]
+    partial class version01
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,7 +49,7 @@ namespace SalesWebMvc.Migrations
 
                     b.HasIndex("SallerId");
 
-                    b.ToTable("SalesRecord");
+                    b.ToTable("SalesRecords");
                 });
 
             modelBuilder.Entity("SalesWebMvc.Models.Saller", b =>

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SalesWebMvc.Data;
+using SalesWebMvc.Model;
 
 namespace SalesWebMvc.Migrations
 {
@@ -46,7 +47,7 @@ namespace SalesWebMvc.Migrations
 
                     b.HasIndex("SallerId");
 
-                    b.ToTable("SalesRecord");
+                    b.ToTable("SalesRecords");
                 });
 
             modelBuilder.Entity("SalesWebMvc.Models.Saller", b =>

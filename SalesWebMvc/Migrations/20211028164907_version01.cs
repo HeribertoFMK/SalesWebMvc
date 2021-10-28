@@ -4,10 +4,23 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SalesWebMvc.Migrations
 {
-    public partial class version1 : Migration
+    public partial class version01 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Department",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Department", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Saller",
                 columns: table => new
@@ -32,7 +45,7 @@ namespace SalesWebMvc.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SalesRecord",
+                name: "SalesRecords",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -44,9 +57,9 @@ namespace SalesWebMvc.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SalesRecord", x => x.Id);
+                    table.PrimaryKey("PK_SalesRecords", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SalesRecord_Saller_SallerId",
+                        name: "FK_SalesRecords_Saller_SallerId",
                         column: x => x.SallerId,
                         principalTable: "Saller",
                         principalColumn: "Id",
@@ -54,8 +67,8 @@ namespace SalesWebMvc.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_SalesRecord_SallerId",
-                table: "SalesRecord",
+                name: "IX_SalesRecords_SallerId",
+                table: "SalesRecords",
                 column: "SallerId");
 
             migrationBuilder.CreateIndex(
@@ -67,10 +80,13 @@ namespace SalesWebMvc.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "SalesRecord");
+                name: "SalesRecords");
 
             migrationBuilder.DropTable(
                 name: "Saller");
+
+            migrationBuilder.DropTable(
+                name: "Department");
         }
     }
 }
