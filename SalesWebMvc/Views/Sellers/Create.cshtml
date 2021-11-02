@@ -11,33 +11,43 @@
 <hr />
 <div class="row">
     <div class="col-lg-4">
-        <form asp-action="Create">            
+        <form asp-action="Create">
+            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Saller.Name" class="control-label"> </label>
-                    <input asp-for="Saller.Name" class="form-control" />               
+                <input asp-for="Saller.Name" class="form-control" />
+                <span asp-validation-for="Saller.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-            <label asp-for="Saller.Email" class="control-label"></label>
-                <input asp-for="Saller.Email" class="form-control" />            
-    </div>
-    <div class="form-group">
-    <label asp-for="Saller.BirthDate" class="control-label"></label>
-        <input asp-for="Saller.BirthDate" class="form-control" />   
-</div>
-<div class="form-group">
-    <label asp-for="Saller.BasySalary" class="control-label"></label>
-    <input asp-for="Saller.BasySalary" class="form-control" />
-</div>
-<div class="form-group">
-    <label asp-for="Saller.DepartmentId" class="control-label"></label>
-    <select asp-for="Saller.DepartmentId" asp-items="@(new SelectList(Model.Departments,"Id",
+                <label asp-for="Saller.Email" class="control-label"></label>
+                <input asp-for="Saller.Email" class="form-control" />
+                <span asp-validation-for="Saller.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Saller.BirthDate" class="control-label"></label>
+                <input asp-for="Saller.BirthDate" class="form-control" />
+                <span asp-validation-for="Saller.BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Saller.BasySalary" class="control-label"></label>
+                <input asp-for="Saller.BasySalary" class="form-control" />
+                <span asp-validation-for="Saller.BasySalary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Saller.DepartmentId" class="control-label"></label>
+                <select asp-for="Saller.DepartmentId" asp-items="@(new SelectList(Model.Departments,"Id",
 "Name"))" class="form-control"></select>
-</div>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
-</form>
-</div>
+        </form>
+    </div>
 
 
 </div>
+
+Client-side validation:
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
